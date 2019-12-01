@@ -23,8 +23,8 @@ def main():
     print(sum(fuel_requirements))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("input", help="Filepath to input file.")
+    parser.add_argument('input', help='Filepath to input file.')
     args = parser.parse_args()
     main()
