@@ -1,4 +1,4 @@
-from typing import List, Set, Tuple
+from typing import Iterable, List, Set, Tuple
 
 import argparse
 import math
@@ -11,18 +11,18 @@ def get_input(filepath: str) -> Tuple[List[str], List[str]]:
     return first_wire, second_wire
 
 
-def process_path(start: Tuple[int, int], path: str) -> List[Tuple[int, int]]:
+def process_path(start: Tuple[int, int], path: str) -> Iterable[Tuple[int, int]]:
     direction = path[0]
     length = int(path[1:])
 
     if direction == "U":
-        return [(start[0], start[1]+i) for i in range(1, length+1)]
+        return ((start[0], start[1]+i) for i in range(1, length+1))
     elif direction == "D":
-        return [(start[0], start[1]-i) for i in range(1, length+1)]
+        return ((start[0], start[1]-i) for i in range(1, length+1))
     elif direction == "R":
-        return [(start[0]+i, start[1]) for i in range(1, length+1)]
+        return ((start[0]+i, start[1]) for i in range(1, length+1))
     elif direction == "L":
-        return [(start[0]-i, start[1]) for i in range(1, length+1)]
+        return ((start[0]-i, start[1]) for i in range(1, length+1))
 
 
 def process_wire(wire: List[str]) -> Set[Tuple[int, int]]:
