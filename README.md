@@ -1,2 +1,2 @@
-# advent-of-code-2019
-Solutions to Advent of Code 2019
+# Advent of Code 2019
+Solutions to [Advent of Code 2019](adventofcode.com/2019)
