@@ -35,7 +35,7 @@ def process_wire(wire: List[str]) -> Set[Tuple[int, int]]:
     return set(points)
 
 
-def manhattan_distance(first_point: Tuple[int, int], second_point: Tuple[int, int]):
+def manhattan_distance(first_point: Tuple[int, int], second_point: Tuple[int, int]) -> int:
     return abs(first_point[0]-second_point[0]) + abs(first_point[1]-second_point[1])
 
 
