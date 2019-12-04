@@ -35,7 +35,7 @@ def process_wire(wire: List[str]) -> Set[Tuple[int, int]]:
     return set(points)
 
 
-def mannhattan_distance(first_point: Tuple[int, int], second_point: Tuple[int, int]):
+def manhattan_distance(first_point: Tuple[int, int], second_point: Tuple[int, int]):
     return abs(first_point[0]-second_point[0]) + abs(first_point[1]-second_point[1])
 
 
@@ -47,7 +47,7 @@ def main():
 
     closest_intersection = math.inf
     for point in intersection_points:
-        distance = mannhattan_distance(point, (0, 0))
+        distance = manhattan_distance(point, (0, 0))
         if distance < closest_intersection:
             closest_intersection = distance
     print(closest_intersection)
