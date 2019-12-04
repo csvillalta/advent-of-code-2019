@@ -35,22 +35,18 @@ def process_wire(wire: List[str]) -> Set[Tuple[int, int]]:
     return set(points)
 
 
-def manhattan_distance(first_point: Tuple[int, int], second_point: Tuple[int, int]) -> int:
-    return abs(first_point[0]-second_point[0]) + abs(first_point[1]-second_point[1])
+def manhattan_distance(first_point: Tuple[int, int], 
+                       second_point: Tuple[int, int]) -> int:
+    return (abs(first_point[0]-second_point[0]) + 
+        abs(first_point[1]-second_point[1]))
 
 
 def main():
     first_wire, second_wire = get_input(args.input)
     first_wire_points = process_wire(first_wire)
     second_wire_points = process_wire(second_wire)
-    intersection_points = first_wire_points.intersection(second_wire_points)
-
-    closest_intersection = math.inf
-    for point in intersection_points:
-        distance = manhattan_distance(point, (0, 0))
-        if distance < closest_intersection:
-            closest_intersection = distance
-    print(closest_intersection)
+    intersections = first_wire_points & second_wire_points
+    print(min((manhattan_distance(point, (0, 0)) for point in intersections)))
 
 
 if __name__ == '__main__':

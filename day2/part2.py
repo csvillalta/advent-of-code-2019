@@ -12,14 +12,14 @@ def get_memory(memory_path: str) -> List[int]:
 def run_program(memory: List[int], noun: int, verb: int) -> int:
     memory[1] = noun
     memory[2] = verb
-    pointer = 0
-    while memory[pointer] != 99:
-        if memory[pointer] == 1:
-            memory[memory[pointer+3]] = memory[memory[pointer+1]] + memory[memory[pointer+2]]
-            pointer += 4
-        elif memory[pointer] == 2:
-            memory[memory[pointer+3]] = memory[memory[pointer+1]] * memory[memory[pointer+2]]
-            pointer += 4
+    pos = 0
+    while memory[pos] != 99:
+        addr1, addr2, addr3 = memory[pos+1], memory[pos+2], memory[pos+3]
+        if memory[pos] == 1:
+            memory[addr3] = memory[addr1] + memory[addr2]
+        elif memory[pos] == 2:
+            memory[addr3] = memory[addr1] * memory[addr2]
+        pos += 4
     return memory[0]
 
 
