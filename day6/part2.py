@@ -1,5 +1,3 @@
-from typing import List, Tuple
-
 import argparse
 import networkx as nx
 
