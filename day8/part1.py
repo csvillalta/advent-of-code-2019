@@ -1,4 +1,4 @@
-from typing import List
+from typing import Iterable
 
 import argparse
 import math
@@ -9,16 +9,13 @@ def get_input(filepath: str) -> str:
         return f.read()
 
 
-def get_flat_layers(input: str, height: int, width: int) -> List[str]:
-    layer_size = height * width
-    flat_layers = [input[i:i+layer_size] 
-                  for i in range(0, len(input), layer_size)]
-    return flat_layers
+def get_flat_layers(input: str, layer_size: int) -> Iterable[str]:
+    return (input[i:i+layer_size] for i in range(0, len(input), layer_size))
 
 
 def main():
     input = get_input(args.input)
-    flat_layers = get_flat_layers(input, 6, 25)
+    flat_layers = get_flat_layers(input, 6*25)
     fewest_zeroes = math.inf
     best_layer = None
     for layer in flat_layers:

@@ -1,4 +1,4 @@
-from typing import Any, List, Tuple
+from typing import Any, Iterable, List, Tuple
 
 import argparse
 import math
@@ -11,17 +11,17 @@ def get_input(filepath: str) -> str:
         return f.read()
 
 
-def split_list(alist: List[Any], interval: int) -> List[List[Any]]:
-    return [alist[i: i+interval] for i in range(0, len(alist), interval)]
+def split_list(alist: Iterable[Any], interval: int) -> Iterable[List[Any]]:
+    return (alist[i: i+interval] for i in range(0, len(alist), interval))
 
 
-def convert_layer(flat_layer: List[str]) -> List[int]:
-    return [int(c) for c in flat_layer]
+def convert_layer(flat_layer: Iterable[str]) -> Iterable[int]:
+    return (int(c) for c in flat_layer)
 
 
-def get_flat_layers(input: str, layer_size: int) -> List[List[int]]:
+def get_flat_layers(input: str, layer_size: int) -> Iterable[List[int]]:
     flat_layers = split_list(input, layer_size)
-    return [convert_layer(layer) for layer in flat_layers]
+    return (convert_layer(layer) for layer in flat_layers)
 
 
 def get_color(color1: int, color2: int) -> int:
@@ -37,7 +37,7 @@ def main():
     for layer in flat_layers:
         image = [get_color(color1, color2) 
                  for color1, color2 in zip(image, layer)]
-    image = split_list(image, width) 
+    image = list(split_list(image, width))
     plt.imshow(image, cmap='binary')
     plt.show()
 
