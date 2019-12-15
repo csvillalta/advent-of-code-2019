@@ -24,7 +24,6 @@ def run(program: List[int]):
         param1 = program[pos+1] if modes[2] else program[program[pos+1]]
         if pos+2 < len(program):
             param2 = program[pos+2] if modes[1] else program[program[pos+2]]
-
         if instruction == 1:
             program[program[pos+3]] = param1 + param2
             pos += 4
